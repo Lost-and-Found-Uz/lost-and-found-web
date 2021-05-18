@@ -3,14 +3,17 @@ import { FooterWrapper } from "../../../components/AuthHome/FooterWrapper";
 import { LINK } from "../../../components/Global/Link";
 import { Text } from "../../../components/Global/Text";
 import { Wrapper } from "../../../components/Global/Wrapper";
+import { useTranslation } from "react-i18next";
 
 const AuthHomeFooter = () => {
+  const { t } = useTranslation();
+
   return (
     <FooterWrapper>
       <Wrapper displayType="flex">
         <LINK
           link="/contact"
-          name="Contact"
+          name={t("Contact")}
           primary={false}
           color="#000"
           fontSize="18px"
@@ -18,7 +21,7 @@ const AuthHomeFooter = () => {
         />
         <LINK
           link="/terms"
-          name="Terms & Services"
+          name={t("Terms & Services")}
           primary={false}
           color="#000"
           fontSize="18px"
@@ -26,7 +29,7 @@ const AuthHomeFooter = () => {
         />
         <LINK
           link="/about"
-          name="About"
+          name={t("About Us")}
           primary={false}
           color="#000"
           fontSize="18px"

@@ -9,8 +9,11 @@ import { Text } from "../../../components/Global/Text";
 import { LangModalWrapper } from "../../../components/AuthHome/LangModalWrapper";
 import { LangModalButton } from "../../../components/AuthHome/LangModalButton";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 const AuthHomeHeader = () => {
+  const { t, i18n } = useTranslation();
   const [langModal, setLangModal] = useState(false);
   const langModalRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +26,10 @@ const AuthHomeHeader = () => {
       }
     });
   }, []);
+
+  const handleLangSelect = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <Wrapper
@@ -37,18 +44,27 @@ const AuthHomeHeader = () => {
       <Wrapper displayType="flex" alignment="center">
         <Wrapper position="relative">
           <LangButton onClick={() => setLangModal(true)}>
-            <Text fontSize="20px">en</Text>
+            <Text fontSize="20px">{i18next.language}</Text>
             <ExpandMoreIcon />
           </LangButton>
           {langModal && (
             <LangModalWrapper ref={langModalRef}>
-              <LangModalButton>uz</LangModalButton>
-              <LangModalButton>ru</LangModalButton>
+              {i18next.languages.map(
+                (l, i) =>
+                  l !== i18next.language && (
+                    <LangModalButton
+                      onClick={() => handleLangSelect(l)}
+                      key={i}
+                    >
+                      {l}
+                    </LangModalButton>
+                  )
+              )}
             </LangModalWrapper>
           )}
         </Wrapper>
-        <NAVBAR_LINK name="Login" link="/login" primary={false} />
-        <NAVBAR_LINK name="Register" link="/register" primary />
+        <NAVBAR_LINK name={t("Login")} link="/login" primary={false} />
+        <NAVBAR_LINK name={t("Register")} link="/register" primary />
       </Wrapper>
     </Wrapper>
   );
