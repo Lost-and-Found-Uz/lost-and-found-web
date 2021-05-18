@@ -28,7 +28,7 @@ export const LOGO_LINK: React.FC = ({ children }, props: LinkProps) => {
   return (
     <LS.LOGO_LINK
       to={{
-        pathname: props.link,
+        pathname: "/",
         state: { ...props },
       }}
     >

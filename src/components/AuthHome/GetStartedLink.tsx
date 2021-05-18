@@ -23,7 +23,7 @@ LS.GET_STARTED_LINK = styled(Link)<Props>`
   width: 200px;
   text-align: center;
   padding: 20px 40px;
-  border: 2px solid palevioletred;
+  border: 2px solid rgb(219, 112, 147);
   border-radius: 99px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;

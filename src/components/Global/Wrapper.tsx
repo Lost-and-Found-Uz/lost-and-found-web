@@ -10,6 +10,8 @@ interface Props {
   alignment?: string;
   margin?: string;
   position?: string;
+  flexDirection?: string;
+  flex?: number;
 }
 
 export const Wrapper = styled("div")<Props>`
@@ -22,4 +24,6 @@ export const Wrapper = styled("div")<Props>`
   align-items: ${(props) => props.alignment};
   margin: ${(props) => props.margin};
   position: ${(props) => props.position};
+  flex-direction: ${(props) => props.flexDirection};
+  flex: ${(props) => props.flex};
 `;

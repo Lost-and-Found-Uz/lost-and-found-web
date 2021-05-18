@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const LangModalWrapper = styled("div")`
   position: absolute;
   top: 120%;
-  background-color: rgba(128, 128, 128, 0.1);
+  background-color: #f6f6f6;
   display: flex;
   flex-direction: column;
   border-radius: 5px;

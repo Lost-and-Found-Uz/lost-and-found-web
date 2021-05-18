@@ -10,5 +10,6 @@ export const InnerBodyWrapper = styled("div")<Props>`
   background-color: ${(props) => props.bgColor};
   display: flex;
   flex-direction: column;
+  justify-content: center;
   /* justify-content: space-between; */
 `;

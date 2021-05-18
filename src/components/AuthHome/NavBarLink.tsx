@@ -23,6 +23,7 @@ LS.NAVBAR_LINK = styled(Link)<Props>`
   margin: 1em;
   padding: 10px 20px;
   border: 2px solid palevioletred;
+  text-align: center;
   border-radius: 99px;
   cursor: pointer;
 
@@ -31,6 +32,16 @@ LS.NAVBAR_LINK = styled(Link)<Props>`
       props.to.state.primary ? "#a85671" : "rgba(168, 86, 113, 0.2)"};
     border-color: ${(props) =>
       props.to.state.primary ? "#a85671" : "palevioletred"};
+  }
+
+  @media (max-width: 1000px) {
+    padding: 5px 10px;
+    font-size: 14px;
+    height: 45px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

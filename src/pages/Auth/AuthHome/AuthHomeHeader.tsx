@@ -11,6 +11,7 @@ import { LangModalButton } from "../../../components/AuthHome/LangModalButton";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { HeaderWrapper } from "../../../components/AuthHome/HeaderWrapper";
 
 const AuthHomeHeader = () => {
   const { t, i18n } = useTranslation();
@@ -32,16 +33,15 @@ const AuthHomeHeader = () => {
   };
 
   return (
-    <Wrapper
-      height="10%"
-      displayType="flex"
-      alignment="center"
-      contentJustification="space-between"
-    >
+    <HeaderWrapper>
       <LOGO_LINK>
         <Image src={logo} width="100px" />
       </LOGO_LINK>
-      <Wrapper displayType="flex" alignment="center">
+      <Wrapper
+        displayType="flex"
+        alignment="center"
+        contentJustification="space-between"
+      >
         <Wrapper position="relative">
           <LangButton onClick={() => setLangModal(true)}>
             <Text fontSize="20px">{i18next.language}</Text>
@@ -66,7 +66,7 @@ const AuthHomeHeader = () => {
         <NAVBAR_LINK name={t("Login")} link="/login" primary={false} />
         <NAVBAR_LINK name={t("Register")} link="/register" primary />
       </Wrapper>
-    </Wrapper>
+    </HeaderWrapper>
   );
 };
 

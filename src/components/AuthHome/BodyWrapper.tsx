@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const BodyWrapper = styled("div")`
-  min-height: 70vh;
   width: 100%;
   display: flex;
+  flex: 1;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
