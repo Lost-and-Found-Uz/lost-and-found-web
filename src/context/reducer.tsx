@@ -1,13 +1,13 @@
 export const initialState = {
-  userId: null,
+  jwt: null,
 };
 
 export type InitialStateType = {
-  userId: string | null;
+  jwt: string | null;
 };
 
 export type ActionType =
-  | { type: "loginUser"; id: string }
+  | { type: "loginUser"; jwt: string }
   | { type: "logOutUser" };
 
 export const reducer = (
@@ -16,16 +16,16 @@ export const reducer = (
 ) => {
   switch (action.type) {
     case "loginUser":
-      localStorage.setItem("userId", action.id);
+      localStorage.setItem("jwt", action.jwt);
       return {
         ...state,
-        userId: action.id,
+        jwt: action.jwt,
       };
     case "logOutUser":
-      localStorage.removeItem("userId");
+      localStorage.removeItem("jwt");
       return {
         ...state,
-        userId: null,
+        jwt: null,
       };
     default:
       return state;

@@ -8,9 +8,8 @@ export const InnerBodyImageWrapper = styled("div")<Props>`
   flex: 1;
   background-color: ${(props) => props.bgColor};
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-end;
-  padding: 5% 0 5% 5%;
 
   @media (max-width: 1000px) {
     justify-content: center;

@@ -10,6 +10,7 @@ interface Props {
       color: string;
       fontSize: string;
       margin?: string;
+      fontWeight?: number;
     };
   };
 }
@@ -19,6 +20,7 @@ LS.CUSTOM_LINK = styled(Link)<Props>`
   color: ${(props) =>
     props.to.state.primary ? "palevioletred" : props.to.state.color};
   font-size: ${(props) => props.to.state.fontSize};
+  font-weight: ${(props) => props.to.state.fontWeight};
   margin: ${(props) => props.to.state.margin};
 `;
 
@@ -29,6 +31,7 @@ interface LinkProps {
   color?: string;
   fontSize?: string;
   margin?: string;
+  fontWeight?: number;
 }
 
 export function LINK(props: LinkProps) {

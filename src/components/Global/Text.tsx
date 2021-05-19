@@ -7,6 +7,7 @@ interface Props {
   fontFamily?: string;
   margin?: string;
   lineHeight?: string;
+  textAlign?: string;
 }
 
 export const Text = styled("p")<Props>`
@@ -15,5 +16,6 @@ export const Text = styled("p")<Props>`
   font-weight: ${(props) => props.fontWeight};
   font-family: ${(props) => props.fontFamily};
   margin: ${(props) => props.margin};
+  text-align: ${(props) => props.textAlign};
   line-height: ${(props) => props.lineHeight};
 `;

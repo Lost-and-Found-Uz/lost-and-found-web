@@ -8,18 +8,18 @@ const AppRouteProvider = () => {
   const { state, dispatch } = useAppContext();
 
   useEffect(() => {
-    const user = localStorage.getItem("userId");
+    const jwt = localStorage.getItem("jwt");
 
-    if (user) {
+    if (jwt) {
       dispatch({
         type: "loginUser",
-        id: user,
+        jwt: jwt,
       });
     }
   }, [dispatch]);
 
   return (
-    <BrowserRouter>{state.userId ? <AppRoute /> : <AuthRoute />}</BrowserRouter>
+    <BrowserRouter>{state.jwt ? <AppRoute /> : <AuthRoute />}</BrowserRouter>
   );
 };
 

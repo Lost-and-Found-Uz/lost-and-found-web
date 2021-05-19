@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const LangButton = styled("button")`
   border: 2px solid #343a40;
+  background: #f5f5f5;
   padding: 10px 15px;
-  width: 70px;
+  height: 50px;
+  width: 100px;
   border-radius: 99px;
   color: #343a40;
   font-size: 30px;
@@ -18,10 +20,8 @@ export const LangButton = styled("button")`
   }
 
   @media (max-width: 1000px) {
-    padding: 5px 10px;
+    margin: 0px;
     font-size: 16px;
-    height: 45px;
-    width: 90px;
     display: flex;
     justify-content: center;
     align-items: center;

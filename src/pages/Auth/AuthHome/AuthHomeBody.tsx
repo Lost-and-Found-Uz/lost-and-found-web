@@ -35,7 +35,7 @@ const AuthHomeBody = () => {
         />
       </InnerBodyWrapper>
       <InnerBodyImageWrapper>
-        <Image src={img} width="80%" />
+        <Image src={img} width="70%" />
       </InnerBodyImageWrapper>
     </BodyWrapper>
   );
