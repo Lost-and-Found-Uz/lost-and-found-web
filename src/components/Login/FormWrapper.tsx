@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormWrapper = styled("form")`
+export const FormWrapper = styled("div")`
   height: 350px;
   width: 450px;
   padding: 5px 10px;

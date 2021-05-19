@@ -12,9 +12,42 @@ import { Text } from "../../../components/Global/Text";
 import { colors } from "../../../common/colors";
 import { baseUrl } from "../../../common/variables";
 import { LOGO_LINK } from "../../../components/AuthHome/LogoLink";
+import { useMutation } from "react-query";
+import axios from "axios";
+import { useAppContext } from "../../../context/AppContext";
+import { useHistory } from "react-router";
 
 const Login: React.FC = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const history = useHistory();
+  const { dispatch } = useAppContext();
+  const [form, setForm] = useState({ username: "", password: "" });
+
+  const mutation = useMutation(() =>
+    axios
+      .post(baseUrl + "/api/auth/login", form)
+      .then((response) => {
+        dispatch({
+          type: "loginUser",
+          jwt: response.data.token,
+        });
+
+        history.push("/");
+      })
+      .catch((err) => {
+        const { response, request } = err;
+
+        if (response) {
+          console.log(response);
+          alert("Bad request! " + err.response.data.msg);
+          console.log(err.response);
+        } else if (request) {
+          alert("Network error!");
+        } else {
+          console.log(err);
+          alert("Something went wrong!");
+        }
+      })
+  );
 
   const handleChange = (event: { target: { name: string; value: string } }) => {
     const { name, value } = event.target;
@@ -22,13 +55,11 @@ const Login: React.FC = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    // e.preventDefault();
-  };
+  const handleSubmit = () => mutation.mutate();
 
   return (
     <LoginWrapper>
-      <FormWrapper action={`${baseUrl}/api/login`} onSubmit={handleSubmit}>
+      <FormWrapper>
         <Wrapper
           displayType="flex"
           contentJustification="center"
@@ -41,11 +72,11 @@ const Login: React.FC = () => {
         </Wrapper>
         <LoginFieldWrapper>
           <Field
-            placeholder="Email"
-            type="email"
+            type="text"
+            placeholder="Username"
             required
-            name="email"
-            value={form.email}
+            name="username"
+            value={form.username}
             onChange={handleChange}
           />
           <Field
@@ -57,7 +88,7 @@ const Login: React.FC = () => {
             onChange={handleChange}
           />
         </LoginFieldWrapper>
-        <LoginSubmitButton>Log in</LoginSubmitButton>
+        <LoginSubmitButton onClick={handleSubmit}>Log in</LoginSubmitButton>
         <Wrapper
           displayType="flex"
           contentJustification="center"
