@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const LangModalButton = styled("button")`
   background: transparent;
-  /* padding: 8px 25px; */
-  height: 50px;
+  height: 40px;
   width: 100px;
   font-size: 22px;
   border: none;
