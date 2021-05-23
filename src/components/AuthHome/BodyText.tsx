@@ -11,4 +11,9 @@ export const BodyText = styled("p")`
     line-height: 50px;
     margin: 25px 0px 0px 0px;
   }
+
+  @media (max-width: 550px) {
+    font-size: 30px;
+    line-height: 35px;
+  }
 `;

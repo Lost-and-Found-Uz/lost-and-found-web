@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { HeaderWrapper } from "../../../components/AuthHome/HeaderWrapper";
+import { NAV_BTN_WRAPPER } from "../../../components/AuthHome/NavBtnWrapper";
 
 const AuthHomeHeader = () => {
   const { t, i18n } = useTranslation();
@@ -37,11 +38,7 @@ const AuthHomeHeader = () => {
       <LOGO_LINK>
         <Image src={logo} width="100px" />
       </LOGO_LINK>
-      <Wrapper
-        displayType="flex"
-        alignment="center"
-        contentJustification="space-between"
-      >
+      <NAV_BTN_WRAPPER>
         <Wrapper position="relative">
           <LangButton onClick={() => setLangModal(true)}>
             <Text fontSize="20px">{i18next.language}</Text>
@@ -63,9 +60,11 @@ const AuthHomeHeader = () => {
             </LangModalWrapper>
           )}
         </Wrapper>
-        <NAVBAR_LINK name={t("Login")} link="/login" primary={false} />
-        <NAVBAR_LINK name={t("Register")} link="/register" primary />
-      </Wrapper>
+        <Wrapper displayType="flex">
+          <NAVBAR_LINK name={t("Login")} link="/login" primary={false} />
+          <NAVBAR_LINK name={t("Register")} link="/register" primary />
+        </Wrapper>
+      </NAV_BTN_WRAPPER>
     </HeaderWrapper>
   );
 };

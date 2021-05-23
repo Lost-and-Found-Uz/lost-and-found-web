@@ -16,8 +16,10 @@ import { baseUrl } from "../../../common/variables";
 import { useAppContext } from "../../../context/AppContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const Register: React.FC = () => {
+  const { t } = useTranslation();
   const { dispatch } = useAppContext();
   const history = useHistory();
 
@@ -33,6 +35,7 @@ const Register: React.FC = () => {
       .post(baseUrl + "/api/auth/register", form)
       .then((response) => {
         alert(response.data.msg);
+        localStorage.setItem("userId", response.data.id);
 
         dispatch({
           type: "loginUser",
@@ -76,7 +79,7 @@ const Register: React.FC = () => {
             <LOGO />
           </LOGO_LINK>
         </Wrapper>
-        <Wrapper
+        {/* <Wrapper
           displayType="flex"
           alignment="center"
           contentJustification="center"
@@ -96,48 +99,53 @@ const Register: React.FC = () => {
           <GOOGLE_ICON />
           <Text>Sign up with Google</Text>
         </RegisterGoogleButton>
-        <REGISTER_OR_LINE />
+        <REGISTER_OR_LINE /> */}
         <Wrapper margin="0% 5%">
           <Field
+            type="text"
+            placeholder={t("Full Name")}
+            name="fullName"
+            value={form.fullName}
+            onChange={handleChange}
+          />
+          <Field
             type="email"
-            placeholder="Email"
+            placeholder={t("Email")}
             name="email"
             value={form.email}
             onChange={handleChange}
           />
           <Field
             type="text"
-            placeholder="Full Name"
-            name="fullName"
-            value={form.fullName}
-            onChange={handleChange}
-          />
-          <Field
-            type="text"
-            placeholder="Username"
+            placeholder={t("Username")}
             name="username"
             value={form.username}
             onChange={handleChange}
           />
           <Field
             type="text"
-            placeholder="Password"
+            placeholder={t("Password")}
             name="password"
             value={form.password}
             onChange={handleChange}
           />
         </Wrapper>
         <RegisterSubmitButton onClick={handleRegister}>
-          Sign Up
+          {t("Register")}
         </RegisterSubmitButton>
-        <Text textAlign="center" lineHeight="25px" fontSize="19px">
-          By signing up, you agree to our <br />{" "}
-          <LINK
+        <Text
+          textAlign="center"
+          margin="10px 0px 0px 0px"
+          lineHeight="25px"
+          fontSize="19px"
+        >
+          {t("By signing up, you agree to our Terms & Services")} <br />{" "}
+          {/* <LINK
             link="/terms"
             name="Terms & Services"
             primary={false}
             color="grey"
-          />{" "}
+          />{" "} */}
         </Text>
       </RegisterFormWrapper>
     </RegisterWrapper>

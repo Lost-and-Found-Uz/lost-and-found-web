@@ -8,4 +8,10 @@ export const LoginBottomWrapper = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 550px) {
+    width: 300px;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 `;

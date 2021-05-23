@@ -12,6 +12,7 @@ interface Props {
   position?: string;
   flexDirection?: string;
   flex?: number;
+  flexWrap?: string;
 }
 
 export const Wrapper = styled("div")<Props>`
@@ -26,4 +27,5 @@ export const Wrapper = styled("div")<Props>`
   position: ${(props) => props.position};
   flex-direction: ${(props) => props.flexDirection};
   flex: ${(props) => props.flex};
+  flex-wrap: ${(props) => props.flexWrap};
 `;

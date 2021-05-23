@@ -8,7 +8,13 @@ const theme = {
   font: "Calibri",
 };
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
@@ -17,7 +23,6 @@ function App() {
         <ThemeProvider theme={theme}>
           <AppRouteProvider />
         </ThemeProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </AppContextProvider>
   );

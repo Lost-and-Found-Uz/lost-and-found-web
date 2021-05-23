@@ -42,6 +42,11 @@ LS.NAVBAR_LINK = styled(Link)<Props>`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 600px) {
+    width: 150px;
   }
 `;
 

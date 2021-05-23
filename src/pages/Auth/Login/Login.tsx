@@ -16,8 +16,10 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import { useAppContext } from "../../../context/AppContext";
 import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const Login: React.FC = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { dispatch } = useAppContext();
   const [form, setForm] = useState({ username: "", password: "" });
@@ -26,6 +28,8 @@ const Login: React.FC = () => {
     axios
       .post(baseUrl + "/api/auth/login", form)
       .then((response) => {
+        localStorage.setItem("userId", response.data.id);
+
         dispatch({
           type: "loginUser",
           jwt: response.data.token,
@@ -38,13 +42,13 @@ const Login: React.FC = () => {
 
         if (response) {
           console.log(response);
-          alert("Bad request! " + err.response.data.msg);
+          alert(t("Bad request!"));
           console.log(err.response);
         } else if (request) {
-          alert("Network error!");
+          alert(t("Network error!"));
         } else {
           console.log(err);
-          alert("Something went wrong!");
+          alert(t("Something went wrong!"));
         }
       })
   );
@@ -73,14 +77,14 @@ const Login: React.FC = () => {
         <LoginFieldWrapper>
           <Field
             type="text"
-            placeholder="Username"
+            placeholder={t("Username")}
             required
             name="username"
             value={form.username}
             onChange={handleChange}
           />
           <Field
-            placeholder="Password"
+            placeholder={t("Password")}
             type="password"
             required
             name="password"
@@ -88,28 +92,30 @@ const Login: React.FC = () => {
             onChange={handleChange}
           />
         </LoginFieldWrapper>
-        <LoginSubmitButton onClick={handleSubmit}>Log in</LoginSubmitButton>
+        <LoginSubmitButton onClick={handleSubmit}>
+          {t("Login")}
+        </LoginSubmitButton>
         <Wrapper
           displayType="flex"
           contentJustification="center"
           margin="15px 0px"
         >
-          <LINK
+          {/* <LINK
             link="/"
             name="Forgot password?"
             primary={false}
             color="#000000"
             fontSize="18px"
-          />
+          /> */}
         </Wrapper>
       </FormWrapper>
       <LoginBottomWrapper>
         <Text margin="0px 15px" fontSize="20px">
-          Don't have an account?
+          {t("Don't have an account?")}
         </Text>
         <LINK
           link="/register"
-          name=" Sign Up"
+          name={t("Create")}
           primary={false}
           color={colors.primary}
           fontSize="18px"
