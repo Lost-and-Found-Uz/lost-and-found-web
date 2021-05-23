@@ -41,13 +41,10 @@ const Login: React.FC = () => {
         const { response, request } = err;
 
         if (response) {
-          console.log(response);
           alert(t("Bad request!"));
-          console.log(err.response);
         } else if (request) {
           alert(t("Network error!"));
         } else {
-          console.log(err);
           alert(t("Something went wrong!"));
         }
       })

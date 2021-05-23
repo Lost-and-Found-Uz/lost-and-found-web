@@ -22,7 +22,6 @@ import HomePostSelectRegion from "./HomePostDialog/HomePostSelectRegion";
 
 const fetchPage = async (page: Number, region: String, itemType: String) => {
   try {
-    console.log(region, itemType);
     const response = await axios.get(
       baseUrl +
         `/api/item/getAllItems?page=${page}&limit=2&region=${region}&case=${itemType}`

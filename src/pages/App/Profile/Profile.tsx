@@ -60,7 +60,6 @@ const Profile = () => {
         setEditable(true);
       })
       .catch((err) => {
-        console.log(err);
         alert("Something went wrong!");
       })
   );
@@ -81,7 +80,6 @@ const Profile = () => {
     const { email, password, phone, fullName, username } = form;
 
     if (email || password || phone || fullName || username) {
-      console.log(form);
       return mutate();
     }
 

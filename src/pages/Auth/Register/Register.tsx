@@ -34,7 +34,7 @@ const Register: React.FC = () => {
     axios
       .post(baseUrl + "/api/auth/register", form)
       .then((response) => {
-        alert(response.data.msg);
+        alert(t("Registeration successful!"));
         localStorage.setItem("userId", response.data.id);
 
         dispatch({
@@ -47,11 +47,9 @@ const Register: React.FC = () => {
       .catch((err) => {
         if (err.response) {
           alert("Bad request! " + err.response.data.msg);
-          console.log(err.response);
         } else if (err.request) {
           alert("Network error!");
         } else {
-          console.log(err);
           alert("Something went wrong!");
         }
       })

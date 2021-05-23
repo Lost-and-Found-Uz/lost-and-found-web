@@ -209,7 +209,7 @@ export default function HomePostItemDialogButton() {
           />
           <TextField
             type="tel"
-            id="title"
+            id="phone"
             label={t("Phone")}
             variant="outlined"
             style={{ marginBottom: "10px" }}
