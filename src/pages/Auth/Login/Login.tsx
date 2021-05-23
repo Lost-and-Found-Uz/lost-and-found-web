@@ -17,8 +17,10 @@ import axios from "axios";
 import { useAppContext } from "../../../context/AppContext";
 import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
+import { CircularProgress } from "@material-ui/core";
 
 const Login: React.FC = () => {
+  const [isPending, setIsPending] = useState(false);
   const { t } = useTranslation();
   const history = useHistory();
   const { dispatch } = useAppContext();
@@ -28,6 +30,7 @@ const Login: React.FC = () => {
     axios
       .post(baseUrl + "/api/auth/login", form)
       .then((response) => {
+        setIsPending(false);
         localStorage.setItem("userId", response.data.id);
 
         dispatch({
@@ -38,6 +41,7 @@ const Login: React.FC = () => {
         history.push("/");
       })
       .catch((err) => {
+        setIsPending(false);
         const { response, request } = err;
 
         if (response) {
@@ -56,7 +60,10 @@ const Login: React.FC = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = () => mutation.mutate();
+  const handleSubmit = () => {
+    setIsPending(true);
+    mutation.mutate();
+  };
 
   return (
     <LoginWrapper>
@@ -89,21 +96,25 @@ const Login: React.FC = () => {
             onChange={handleChange}
           />
         </LoginFieldWrapper>
-        <LoginSubmitButton onClick={handleSubmit}>
-          {t("Login")}
+        <LoginSubmitButton onClick={handleSubmit} disabled={isPending}>
+          {isPending ? (
+            <CircularProgress color="inherit" size="18px" />
+          ) : (
+            t("Login")
+          )}
         </LoginSubmitButton>
         <Wrapper
           displayType="flex"
           contentJustification="center"
           margin="15px 0px"
         >
-          {/* <LINK
-            link="/"
+          <LINK
+            link="/forgotPassword"
             name="Forgot password?"
             primary={false}
             color="#000000"
             fontSize="18px"
-          /> */}
+          />
         </Wrapper>
       </FormWrapper>
       <LoginBottomWrapper>

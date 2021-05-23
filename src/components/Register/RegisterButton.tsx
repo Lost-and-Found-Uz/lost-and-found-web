@@ -16,4 +16,8 @@ export const RegisterSubmitButton = styled("button")`
   &:hover {
     background-color: rgb(184, 94, 124);
   }
+
+  &:disabled {
+    background-color: rgb(184, 94, 124);
+  }
 `;

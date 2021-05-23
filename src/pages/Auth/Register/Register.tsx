@@ -17,12 +17,14 @@ import { useAppContext } from "../../../context/AppContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { CircularProgress } from "@material-ui/core";
 
 const Register: React.FC = () => {
   const { t } = useTranslation();
   const { dispatch } = useAppContext();
   const history = useHistory();
 
+  const [isPending, setIsPending] = useState(false);
   const [form, setForm] = useState({
     email: "",
     fullName: "",
@@ -34,6 +36,7 @@ const Register: React.FC = () => {
     axios
       .post(baseUrl + "/api/auth/register", form)
       .then((response) => {
+        setIsPending(false);
         alert(t("Registeration successful!"));
         localStorage.setItem("userId", response.data.id);
 
@@ -45,6 +48,8 @@ const Register: React.FC = () => {
         history.push("/");
       })
       .catch((err) => {
+        setIsPending(false);
+
         if (err.response) {
           alert(t("Bad request!"));
         } else if (err.request) {
@@ -61,6 +66,7 @@ const Register: React.FC = () => {
   };
 
   const handleRegister = () => {
+    setIsPending(true);
     mutation.mutate();
   };
 
@@ -128,8 +134,12 @@ const Register: React.FC = () => {
             onChange={handleChange}
           />
         </Wrapper>
-        <RegisterSubmitButton onClick={handleRegister}>
-          {t("Register")}
+        <RegisterSubmitButton onClick={handleRegister} disabled={isPending}>
+          {isPending ? (
+            <CircularProgress color="inherit" size="18px" />
+          ) : (
+            t("Register")
+          )}
         </RegisterSubmitButton>
         <Text
           textAlign="center"
