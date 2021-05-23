@@ -11,7 +11,7 @@ const Terms = () => {
     <TERMS_WRAPPER>
       <TERMS_CARD>
         <Text fontSize="25px" fontWeight="600" margin="15px 0px">
-          Terms and services
+          {t("Terms & Services")}
         </Text>
         <Text lineHeight="30px" fontSize="20px">
           {t("Terms warning")}

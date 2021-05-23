@@ -107,7 +107,7 @@ const Login: React.FC = () => {
         </Wrapper>
       </FormWrapper>
       <LoginBottomWrapper>
-        <Text margin="0px 15px" fontSize="20px">
+        <Text margin="0px 15px" fontSize="20px" textAlign="center">
           {t("Don't have an account?")}
         </Text>
         <LINK

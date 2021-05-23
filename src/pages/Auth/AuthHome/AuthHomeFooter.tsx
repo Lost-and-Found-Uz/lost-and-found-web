@@ -13,7 +13,7 @@ const AuthHomeFooter = () => {
         primary={false}
         color="#000"
         fontSize="18px"
-        margin="0px 45px 20px 0px"
+        margin="5px"
       />
       <LINK
         link="/terms"
@@ -21,7 +21,7 @@ const AuthHomeFooter = () => {
         primary={false}
         color="#000"
         fontSize="18px"
-        margin="0px 45px 20px 0px"
+        margin="5px"
       />
       <LINK
         link="/about"
@@ -29,7 +29,7 @@ const AuthHomeFooter = () => {
         primary={false}
         color="#000"
         fontSize="18px"
-        margin="0px 45px 20px 0px"
+        margin="5px"
       />
     </FooterWrapper>
   );

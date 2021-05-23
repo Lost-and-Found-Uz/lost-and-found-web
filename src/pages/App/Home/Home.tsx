@@ -24,7 +24,7 @@ const fetchPage = async (page: Number, region: String, itemType: String) => {
   try {
     const response = await axios.get(
       baseUrl +
-        `/api/item/getAllItems?page=${page}&limit=2&region=${region}&case=${itemType}`
+        `/api/item/getAllItems?page=${page}&limit=7&region=${region}&case=${itemType}`
     );
     return response.data;
   } catch (error) {

@@ -38,7 +38,7 @@ LS.NAVBAR_LINK = styled(Link)<Props>`
     padding: 5px 10px;
     font-size: 14px;
     height: 45px;
-    width: 90px;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;

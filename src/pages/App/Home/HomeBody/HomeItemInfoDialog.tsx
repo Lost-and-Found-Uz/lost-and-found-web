@@ -101,7 +101,9 @@ export const HomeItemInfoDialog: React.FC<Item> = (item) => {
               alignment="center"
             >
               <Text>{t("Posted by")}: </Text>
-              <Text fontWeight="600">{item.user.fullName}</Text>
+              <Text fontWeight="600" textAlign="right">
+                {item.user.fullName}
+              </Text>
             </Wrapper>
             <Wrapper
               height="40px"
@@ -110,7 +112,7 @@ export const HomeItemInfoDialog: React.FC<Item> = (item) => {
               alignment="center"
             >
               <Text>{t("Posted at")}: </Text>
-              <Text fontWeight="600">{` ${getParsedMonthDate(
+              <Text fontWeight="600" textAlign="right">{` ${getParsedMonthDate(
                 item.date
               )} (${getParsedTime(item.date)})`}</Text>
             </Wrapper>
@@ -121,7 +123,9 @@ export const HomeItemInfoDialog: React.FC<Item> = (item) => {
               alignment="center"
             >
               <Text>{t("Phone")}: </Text>
-              <Text fontWeight="600">{item.user.phone}</Text>
+              <Text fontWeight="600" textAlign="right">
+                {item.user.phone}
+              </Text>
             </Wrapper>
             <Wrapper
               displayType="flex"

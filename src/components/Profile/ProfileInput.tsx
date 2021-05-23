@@ -12,4 +12,5 @@ export const PROFILE_INPUT = styled("input")<Props>`
   font-size: 20px;
   text-align: ${(props) => props.textAlign};
   outline-color: ${colors.primary};
+  border: 1px solid lightgrey;
 `;

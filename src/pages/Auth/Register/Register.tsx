@@ -46,11 +46,11 @@ const Register: React.FC = () => {
       })
       .catch((err) => {
         if (err.response) {
-          alert("Bad request! " + err.response.data.msg);
+          alert(t("Bad request!"));
         } else if (err.request) {
-          alert("Network error!");
+          alert(t("Network error!"));
         } else {
-          alert("Something went wrong!");
+          alert(t("Something went wrong!"));
         }
       })
   );

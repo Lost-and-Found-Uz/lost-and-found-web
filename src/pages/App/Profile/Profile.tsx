@@ -45,7 +45,6 @@ const Profile = () => {
     fullName: "",
     username: "",
     email: "",
-    phone: "",
     password: "",
   });
 
@@ -77,9 +76,9 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    const { email, password, phone, fullName, username } = form;
+    const { email, password, fullName, username } = form;
 
-    if (email || password || phone || fullName || username) {
+    if (email || password || fullName || username) {
       return mutate();
     }
 
@@ -139,16 +138,6 @@ const Profile = () => {
               defaultValue={t(data.email)}
               readOnly={editable}
               name="email"
-              onChange={handleChange}
-            />
-          </PROFILE_BODY_CARD_WRAPPER>
-
-          <PROFILE_BODY_CARD_WRAPPER>
-            <Text margin="0px 0px 5px 0px">{t("Phone")}:</Text>
-            <PROFILE_INPUT
-              defaultValue={t(data.phone)}
-              readOnly={editable}
-              name="phone"
               onChange={handleChange}
             />
           </PROFILE_BODY_CARD_WRAPPER>
